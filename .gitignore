@@ -1,0 +1,23 @@
+# Code
+airflow-volumes/config/*
+airflow-volumes/logs/*
+airflow-volumes/plugins/*
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+.env
+postgresql-volume/*
+mongodb-volume/*
+*.ipynb
+
+# Windows system files
+Thumbs.db
+desktop.ini
+
+# MacOS system files
+.DS_Store
+.Spotlight-V100
+.Trashes
+._*
