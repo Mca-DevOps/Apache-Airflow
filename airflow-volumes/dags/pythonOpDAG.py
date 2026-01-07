@@ -3,7 +3,6 @@ import airflow
 from airflow.operators.python import PythonOperator
 from datetime import datetime
 
-# !!!! Next step: define a get_age() function which will deliver an age and just use the task_instance variable in the greet function in order to print fn, ln and age
 
 # greet which pull informations from get_age and get_name functions to greet the user
 greet:Callable[[airflow.models.taskinstance.TaskInstance],None] = lambda task_instance: print(f"Hello World ! My name is {task_instance.xcom_pull(task_ids='Get_name_task', key="first_name")} \
