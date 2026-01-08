@@ -11,7 +11,8 @@ defaultArgs = {
     default_args=defaultArgs,
     description="The python operator DAG we created with Taskflow !",
     start_date=datetime(2026, 1, 7),
-    schedule="*/30 * * * *"
+    schedule="*/30 * * * *",
+    catchup=False
 )
 def pythonOp_dag_taskflow():
 
