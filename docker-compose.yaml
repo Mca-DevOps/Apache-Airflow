@@ -98,6 +98,8 @@ services:
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
       POSTGRES_DB: airflow
     container_name: airflow-postgres
+    ports:
+      - "5432:5432"
     volumes:
       - ./postgresql-volume:/var/lib/postgresql/data
     healthcheck:
