@@ -11,6 +11,7 @@ venv/
 postgresql-volume/*
 mongodb-volume/*
 *.ipynb
+minio.license
 
 # Windows system files
 Thumbs.db
