@@ -84,11 +84,16 @@ http://localhost:9009
 ## 4. Some files content
 It's import to make some files content fathomable for the user.
 - **airflow-volumes/**: Airflow is composed of some components as defined in the `docker-compose.yaml file`. Each component that is a container has a volume where data is persisted. To keep this data available even after shutting down all containers, those volumes are binded to local folders. Those folders are contained in `airflow-volumes/` directory.
+
 - **minio/**: Minio being a container, The logic behind `Minio/` directory is the same as the one behind `airflow-volumes/`. Moreover, it contains `minio.license` which is necessary to activate MinIO AIStor container
+
 - **Dockerfile.airflow**: It's an extended docker image configuration file of `apache/airflow` docker image. It contains `requirements.txt` file which will install all needed python packages for the DAGs development
-- **.env**: This file contains all variables and credentials needed to run efficiently and correctly the `docker-compose.yaml` file. Refer to [Troubleshooting section](#6.Troubleshooting) for more details.
-- **docker-compose.yaml**:
-- **Makefile**:
+
+- **.env**: This file contains all variables and credentials needed to run efficiently and correctly the `docker-compose.yaml` file. Refer to [Troubleshooting section](#Troubleshooting) for more details.
+
+- **docker-compose.yaml**: contains containers definitions for Airflow webserver, scheduler, worker, Postgres (Metadata database for Airflow). This definition is a Docker stack because they share the same docker network and can communicate one another.
+
+- **Makefile**: a file where some commands are defined in order to automate some tasks like the `.env` file creation and MinIO AIStor container creation
 
 <br/>
 
@@ -96,16 +101,21 @@ It's import to make some files content fathomable for the user.
 ## 5. Use cases
 Let deep dive into various use cases resolved through DAGs in the airflow-volumes/DAG
 
-- **DAGs and Operators**
-- **XComs**
-- **Airflow Connections**
-- **Sensors**
+- **DAGs and Operators**: Introduction to DAGs and Operators in Airflow. a DAG(Directed Acyclic Graph) is a sequence of tasks and tasks are the logical representation of an Operator and the DAG's nodes. Each task may have a downstream (a descendant node) and/or an upstream (an ascendant node) task. There are a bunch of operators preset delivered by airflow but the user can create his own ones. Check the examples with [BashOperator](./airflow-volumes/dags/first_dag.py) and for [PythonOperator](./airflow-volumes/dags/pythonOpDAG.py)
+
+- **XComs**:
+
+- **Airflow Connections**: It's a feature powered by Airflow which allows the user to connect some data sources to the platform in order to create tasks which will interact with them.
+
+<image src="./doc/connections.gif" width=1000 center>
+
+- **Sensors**:
 
 <br/>
 
 
 ---
-## 6. Troubleshooting
+## Troubleshooting
 > Avoid using `postgres` as value for `POSTGRES_USER` variable in `.env` file. It'll disturb the logging in yo your postgres container. And **Airflow Postgres Connection** may not be able to log in your postgres container.
 
 > If you encounter some writing permissions issues for `airflow-volumes/` directory especially `airflow-volumes/dags/` one, execute the following command in your terminal:
