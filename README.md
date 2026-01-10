@@ -86,7 +86,7 @@ It's import to make some files content fathomable for the user.
 - **airflow-volumes/**: Airflow is composed of some components as defined in the `docker-compose.yaml file`. Each component that is a container has a volume where data is persisted. To keep this data available even after shutting down all containers, those volumes are binded to local folders. Those folders are contained in `airflow-volumes/` directory.
 - **minio/**: Minio being a container, The logic behind `Minio/` directory is the same as the one behind `airflow-volumes/`. Moreover, it contains `minio.license` which is necessary to activate MinIO AIStor container
 - **Dockerfile.airflow**: It's an extended docker image configuration file of `apache/airflow` docker image. It contains `requirements.txt` file which will install all needed python packages for the DAGs development
-- **.env**: This file contains all variables and credentials needed to run efficiently and correctly the `docker-compose.yaml` file. Refer to [Troubleshooting section](#Troubleshooting) for more details.
+- **.env**: This file contains all variables and credentials needed to run efficiently and correctly the `docker-compose.yaml` file. Refer to [Troubleshooting section](#6.Troubleshooting) for more details.
 - **docker-compose.yaml**:
 - **Makefile**:
 
@@ -105,7 +105,7 @@ Let deep dive into various use cases resolved through DAGs in the airflow-volume
 
 
 ---
-## Troubleshooting
+## 6. Troubleshooting
 > Avoid using `postgres` as value for `POSTGRES_USER` variable in `.env` file. It'll disturb the logging in yo your postgres container. And **Airflow Postgres Connection** may not be able to log in your postgres container.
 
 > If you encounter some writing permissions issues for `airflow-volumes/` directory especially `airflow-volumes/dags/` one, execute the following command in your terminal:
