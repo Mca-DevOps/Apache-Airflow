@@ -124,6 +124,16 @@ Let deep dive into various use cases resolved through DAGs in the airflow-volume
 >```
 > Then copy the output value and paste it as value of the `AIRFLOW_UID` variable in the `.env` file.
 
+> Airflow UI > Admin > Connections > "+" 
+> Extra
+>```json
+>{
+>  "aws_access_key_id": "minioadmin",
+>  "aws_secret_access_key": "minioadmin",
+>  "endpoint_url": "http://localhost:9008",
+>  "addressing_style": "path"
+>}
+>```
 
 <br/>
 
