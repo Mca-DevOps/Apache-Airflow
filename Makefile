@@ -29,9 +29,3 @@ dotenv: ## Generate the project .env file blueprint
 	@echo "Creation of .env file blueprint"
 	@echo "AIRFLOW_UID=501\nAIRFLOW_PROJ_DIR=./airflow-volumes\n# AIRFLOW WEBSERVER CREDENTIALS\n_AIRFLOW_WWW_USER_USERNAME=\n_AIRFLOW_WWW_USER_PASSWORD=\n# POSTGRES DATABASE CREDENTIALS\nPOSTGRES_USER=\nPOSTGRES_PASSWORD=" > .env
 	@echo "Successfully done"
-
-minio-aistor:	 ## Download and run MinIO AISTOR image as a Docker container
-	@echo "Downloading MinIO AISTOR image"
-	@docker pull quay.io/minio/aistor/minio
-	@docker run -dt -p 9008:9008 -p 9009:9009 -v ./minio/data:/mnt/data -v ./minio/minio.license:/minio.license -v ./minio/certs:/etc/minio/certs --name "aistor-server" quay.io/minio/aistor/minio:latest minio server /mnt/data --console-address ":9009" --address ":9008" --license /minio.license
-	@echo "Successfully done"
